@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Jeep - Comparte tu Proyecto</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Aventura JEEP</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="piezas.html">Piezas</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="guias.html">Guías</a></li>
+                    <li><a href="comunidad.html" class="active">Comunidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1 class="section-title">Comparte tu Creación</h1>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">¿Estás orgulloso de tu Jeep? ¡Muéstralo al mundo! Rellena este formulario para que tu proyecto aparezca en nuestra galería de la comunidad.</p>
+
+        <div class="form-container">
+            <form id="proyecto-form">
+                <div class="form-group">
+                    <label for="nombre-proyecto">Nombre de tu Proyecto</label>
+                    <input type="text" id="nombre-proyecto" name="nombre-proyecto" placeholder="Ej: El Conquistador" required>
+                </div>
+                <div class="form-group">
+                    <label for="tu-nombre">Tu Nombre</label>
+                    <input type="text" id="tu-nombre" name="tu-nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción de las modificaciones</label>
+                    <textarea id="descripcion" name="descripcion" rows="6" placeholder="Detalla las piezas que instalaste, la pintura, etc." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="fotos">Sube tus fotos (Antes y Después)</label>
+                    <input type="file" id="fotos" name="fotos" multiple>
+                </div>
+                <div id="preview" style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;"></div>
+                <button type="submit" class="btn">Enviar Proyecto</button>
+            </form>
+        </div>
+
+        <hr style="margin:40px 0;">
+        <h2 class="section-title" style="text-align:center;">Galería de la Comunidad</h2>
+        <div id="galeria-comunidad" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;"></div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p> Aventura Jeep.</p>
+        </div>
+    </footer>
+
+    <script>
+const fotosInput = document.getElementById('fotos');
+const preview = document.getElementById('preview');
+let imagenesSeleccionadas = [];
+
+fotosInput.addEventListener('change', function(event) {
+    preview.innerHTML = '';
+    imagenesSeleccionadas = [];
+    const files = event.target.files;
+    if (files) {
+        Array.from(files).forEach((file, idx) => {
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagenesSeleccionadas.push(e.target.result);
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.maxWidth = '120px';
+                    img.style.maxHeight = '120px';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '8px';
+                    img.title = "Haz clic para quitar";
+                    img.style.cursor = "pointer";
+                    img.onclick = function() {
+                        imagenesSeleccionadas.splice(idx, 1);
+                        fotosInput.value = "";
+                        mostrarPreview();
+                    };
+                    preview.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+});
+
+function mostrarPreview() {
+    preview.innerHTML = '';
+    imagenesSeleccionadas.forEach((src, idx) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.style.maxWidth = '120px';
+        img.style.maxHeight = '120px';
+        img.style.objectFit = 'cover';
+        img.style.borderRadius = '8px';
+        img.title = "Haz clic para quitar";
+        img.style.cursor = "pointer";
+        img.onclick = function() {
+            imagenesSeleccionadas.splice(idx, 1);
+            mostrarPreview();
+        };
+        preview.appendChild(img);
+    });
+}
+
+// Mostrar en galería al enviar
+document.getElementById('proyecto-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nombreProyecto = document.getElementById('nombre-proyecto').value;
+    const tuNombre = document.getElementById('tu-nombre').value;
+    const descripcion = document.getElementById('descripcion').value;
+
+    // Guardar en localStorage
+    let proyectos = JSON.parse(localStorage.getItem('proyectosComunidad') || '[]');
+    proyectos.push({
+        nombre: nombreProyecto,
+        autor: tuNombre,
+        descripcion: descripcion,
+        imagenes: imagenesSeleccionadas
+    });
+    localStorage.setItem('proyectosComunidad', JSON.stringify(proyectos));
+
+    // ...código para mostrar en galería de la misma página...
+    // (puedes dejarlo si quieres que también se vea en comunidad.html)
+
+    // Limpiar formulario y preview
+    this.reset();
+    imagenesSeleccionadas = [];
+    preview.innerHTML = '';
+});
+</script>
+
+</body>
+</html>

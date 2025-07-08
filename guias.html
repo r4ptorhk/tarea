@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Jeep - Guías y Consejos</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Aventura JEEP</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="piezas.html">Piezas</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="guias.html" class="active">Guías</a></li>
+                    <li><a href="comunidad.html">Comunidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1 class="section-title">Guías y Consejos</h1>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">Conviértete en un experto con nuestros tutoriales. Desde lo más básico hasta las modificaciones más complejas.</p>
+
+        <div class="grid-container">
+            <!-- Guía 1 -->
+            <div class="card">
+                <div class="card-content">
+                    <h3>Cómo elegir el kit de suspensión ideal</h3>
+                    <p>Te explicamos las diferencias entre kits de 2.5", 3.5" y más, para que elijas el que mejor se adapta a tu uso.</p>
+                    <a href="#" class="btn" onclick="mostrarMas(this, 1); return false;">Leer Más</a>
+                    <div class="extra-content" id="extra-1" style="display: none; margin-top: 10px;">
+                        <p>
+                            Los kits de suspensión varían en altura y componentes. Un kit de 2.5" es ideal para uso diario y rutas ligeras, mientras que uno de 3.5" o más es para rutas exigentes y permite neumáticos más grandes. Considera también la calidad de los amortiguadores y la compatibilidad con otros accesorios.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Guía 2 -->
+            <div class="card">
+                <div class="card-content">
+                    <h3>Instalación de una barra de luces LED paso a paso</h3>
+                    <p>Una guía completa con diagramas eléctricos para que instales tus luces de forma segura y profesional.</p>
+                    <a href="#" class="btn" onclick="mostrarMas(this, 2); return false;">Leer Más</a>
+                    <div class="extra-content" id="extra-2" style="display: none; margin-top: 10px;">
+                        <p>
+                            Antes de instalar, asegúrate de tener el kit adecuado y sigue el diagrama eléctrico. Conecta siempre la barra de luces a un relé y fusible para evitar sobrecargas. Prueba la instalación antes de fijar los cables definitivamente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Guía 3 -->
+            <div class="card">
+                <div class="card-content">
+                    <h3>Mantenimiento básico para tu Jeep después de una ruta</h3>
+                    <p>Aprende qué revisar y limpiar después de un día de off-road para mantener tu vehículo en perfectas condiciones.</p>
+                    <a href="#" class="btn" onclick="mostrarMas(this, 3); return false;">Leer Más</a>
+                    <div class="extra-content" id="extra-3" style="display: none; margin-top: 10px;">
+                        <p>
+                            Revisa el estado de los bajos, limpia el filtro de aire, verifica niveles de líquidos y busca posibles daños en suspensión o neumáticos. Un buen mantenimiento previene averías y alarga la vida útil de tu Jeep.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p> Aventura Jeep.</p>
+        </div>
+    </footer>
+
+    <script>
+    function mostrarMas(boton, id) {
+        var extra = document.getElementById('extra-' + id);
+        if (extra.style.display === "none") {
+            extra.style.display = "block";
+            boton.textContent = "Leer Menos";
+        } else {
+            extra.style.display = "none";
+            boton.textContent = "Leer Más";
+        }
+    }
+    </script>
+
+</body>
+</html>

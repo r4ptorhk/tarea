@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Jeep - Piezas y Accesorios</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Aventura JEEP</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="piezas.html" class="active">Piezas</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="guias.html">Guías</a></li>
+                    <li><a href="comunidad.html">Comunidad</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container section">
+        <h1 class="section-title">Piezas y Accesorios</h1>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">Explora nuestra selección de componentes de alta calidad para personalizar y mejorar el rendimiento de tu Jeep.</p>
+        
+        <div class="grid-container">
+            <!-- Pieza 1 -->
+            <div class="card">
+                <img src="https://tse1.mm.bing.net/th/id/OIP.inhnX-p-VCQuz96TtX0oOAHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Kit de Suspensión">
+                <div class="card-content">
+                    <h3>Kit de Suspensión 3.5"</h3>
+                    <p>Aumenta la altura y mejora la capacidad off-road de tu vehículo.</p>
+                    <a href="#" class="btn" onclick="verDetalles(this, 1); return false;">Ver Detalles</a>
+                    <div class="extra-content" id="detalle-1" style="display: none; margin-top: 10px;">
+                        <p>
+                            Incluye amortiguadores reforzados, resortes de alto desempeño y todos los accesorios para una instalación segura. Compatible con modelos Jeep Wrangler JK 2007-2018.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pieza 2 -->
+            <div class="card">
+                <img src="https://tse2.mm.bing.net/th/id/OIP.KLYheSr6XwUjw4JuK9lRJwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Llantas Todoterreno">
+                <div class="card-content">
+                    <h3>Llantas 35" Mud-Terrain</h3>
+                    <p>Máximo agarre en lodo, rocas y terrenos difíciles. Listas para la aventura.</p>
+                    <a href="#" class="btn" onclick="verDetalles(this, 2); return false;">Ver Detalles</a>
+                    <div class="extra-content" id="detalle-2" style="display: none; margin-top: 10px;">
+                        <p>
+                            Compuesto de caucho resistente, diseño de banda agresivo y flancos reforzados para máxima durabilidad en condiciones extremas.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pieza 3 -->
+            <div class="card">
+                <img src="https://www.ledfactorymart.com/cdn/shop/files/jeep-jk-led-light-bar-52-inch-vehicle_1024x.jpg?v=1693554305" alt="Barra de Luces LED">
+                <div class="card-content">
+                    <h3>Barra de Luces LED 52"</h3>
+                    <p>Ilumina la noche y ten una visibilidad perfecta en cualquier ruta nocturna.</p>
+                    <a href="#" class="btn" onclick="verDetalles(this, 3); return false;">Ver Detalles</a>
+                    <div class="extra-content" id="detalle-3" style="display: none; margin-top: 10px;">
+                        <p>
+                            Potencia de 300W, resistente al agua (IP67), incluye soportes de montaje y cableado completo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Pieza 4 -->
+            <div class="card">
+                <img src="https://http2.mlstatic.com/D_NQ_NP_742872-MLM69355978569_052023-O.webp" alt="Defensa de Acero">
+                <div class="card-content">
+                    <h3>Defensa Delantera de Acero</h3>
+                    <p>Protección robusta y un look agresivo. Preparada para instalar un winch.</p>
+                    <a href="#" class="btn" onclick="verDetalles(this, 4); return false;">Ver Detalles</a>
+                    <div class="extra-content" id="detalle-4" style="display: none; margin-top: 10px;">
+                        <p>
+                            Fabricada en acero de alta resistencia, acabado anticorrosivo y puntos de anclaje para grilletes y winch.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p> Aventura Jeep. </p>
+        </div>
+    </footer>
+
+    <script>
+    function verDetalles(boton, id) {
+        var extra = document.getElementById('detalle-' + id);
+        if (extra.style.display === "none") {
+            extra.style.display = "block";
+            boton.textContent = "Ocultar Detalles";
+        } else {
+            extra.style.display = "none";
+            boton.textContent = "Ver Detalles";
+        }
+    }
+    </script>
+
+</body>
+</html>
